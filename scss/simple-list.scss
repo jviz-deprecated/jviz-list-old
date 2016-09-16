@@ -1,0 +1,81 @@
+//Import jviz
+@import "{JVIZ_MODULES}jviz/scss/all";
+
+//Simple list class
+.jviz-modules-simple-list
+{
+  //Style
+  display: block; width: 100%;
+
+  //Margin
+  margin: { top: 0px; bottom: 10px; }
+
+  //Table
+  &-table
+  {
+    //Style
+    display: table; width: 100%; overflow-x: hide;
+
+    //Border
+    border: { collapse: separate; width: 0px; spacing: 0px 10px; }
+  }
+
+  //Row
+  &-row
+  {
+    //Style
+    display: table-row;
+  }
+
+  //Cell
+  &-cell
+  {
+    //Style
+    display: table-cell; vertical-align: middle;
+
+    //Background
+    background-color: $jvizGrey2;
+
+    //Padding
+    padding: { top: 10px; left: 10px; right: 10px; bottom: 10px; }
+
+    //First child
+    &:first-child
+    {
+      //Border top left
+      border-top-left-radius: 5px !important;
+
+      //Border bottom left
+      border-bottom-left-radius: 5px !important;
+    }
+
+    //Last child
+    &:last-child
+    {
+      //Border top right
+      border-top-right-radius: 5px !important;
+
+      //Border bottom right
+      border-bottom-right-radius: 5px !important;
+    }
+  }
+
+  //Button class
+  &-btn
+  {
+    //Import button base
+    @include jvizBtn($jvizNavy4, $jvizWhite);
+
+    //Style
+    display: block !important; float: left;
+
+    //Margin
+    margin: { right: 5px; }
+  }
+
+  //Title text
+  &-title { display: block; line-height: 20px; @include jvizFont; font-weight: bold; font-size: 16px; }
+
+  //Detail
+  &-detail { display: block; line-height: 20px; @include jvizFont; font-size: 15px; margin: { top: 2px; } }
+}
