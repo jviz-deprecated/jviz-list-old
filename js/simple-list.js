@@ -45,7 +45,7 @@ jviz.modules.simpleList = function(opt)
   this._btn = {};
   this._btn.id = this._id + '-btn'; //Button ID
   this._btn.class = this._class + '-btn'; //Button class
-  this._btn.src = []; //Buttons list
+  this._btn.src = (typeof opt.btn === 'undefined') ? [] : opt.btn; //Buttons list
 
   //Build the events
   jviz.factory.events(this);
