@@ -48,9 +48,6 @@ jviz.modules.simpleList.prototype.displayBtn = function(el, cell_id, cell_index)
 
   //Add the button
   jviz.dom.append({ _tag: 'div', id: id, class: this._btn.class, _html: value }, cell_id);
-
-  //Add the button event
-  $('#' + id).on('mousedown', function(){ self.clickBtn(el.id, cell_index); });
 };
 
 //Parse the buttons list
@@ -73,6 +70,23 @@ jviz.modules.simpleList.prototype.parseBtn = function(list)
   return list;
 };
 
+//Add the button events
+jviz.modules.simpleList.prototype.eventBtn = function(index)
+{
+  //Save this
+  var self = this;
+
+  //Read all the buttons
+  this._btn.src.forEach(function(el)
+  {
+    //Get the button ID
+    var id = self._btn.id + '-' + index + '-' + el.id;
+
+    //Add the button event
+    $('#' + id).on('mousedown', function(){ self.clickBtn(el.id, index); });
+  });
+};
+
 //Click button event
 jviz.modules.simpleList.prototype.clickBtn = function(id, index)
 {
@@ -80,5 +94,5 @@ jviz.modules.simpleList.prototype.clickBtn = function(id, index)
   var data = this._data.src[index];
 
   //Emit the event
-  this.emit('btn:' + id, data, index);
+  this.emit('click:' + id, data, index);
 }
