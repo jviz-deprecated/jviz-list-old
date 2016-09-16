@@ -35,37 +35,22 @@ jviz.modules.simpleList.prototype.addBtn = function(obj)
 };
 
 //Display a new button
-jviz.modules.simpleList.prototype.displayBtn = function(obj, cell_id, cell_index)
+jviz.modules.simpleList.prototype.displayBtn = function(el, cell_id, cell_index)
 {
   //Save this
   var self = this;
 
   //Get the button id
-  var btn_id = this._btn.id + '-' + cell_index + '-' + obj.id;
+  var id = this._btn.id + '-' + cell_index + '-' + el.id;
 
-  //Get the button class
-  var btn_class = this._btn.class + ' ' + this._btn.type[obj.type];
+  //Get the button value
+  var value = el.text;
 
   //Add the button
-  jviz.dom.append({ _tag: 'div', id: btn_id, class: btn_class }, cell_id);
-
-  //Check the button type
-  if(obj.type === 'icon')
-  {
-    //Update the style
-    $('#' + btn_id).css('background-image', '');
-
-    //Exit
-    return;
-  }
-  else
-  {
-    //Add the text
-    jviz.dom.append(obj.value, btn_id);
-  }
+  jviz.dom.append({ _tag: 'div', id: id, class: this._btn.class, _html: value }, cell_id);
 
   //Add the button event
-  $('#' + btn_id).on('mousedown', function(){ self.clickBtn(obj.id, cell_index); });
+  $('#' + id).on('mousedown', function(){ self.clickBtn(el.id, cell_index); });
 };
 
 //Parse the buttons list
@@ -77,11 +62,8 @@ jviz.modules.simpleList.prototype.parseBtn = function(list)
     //Check the button id
     if(typeof el.id === 'undefined'){ el.id = jviz.utils.genID({ length: 5 }); }
 
-    //Check the type
-    if(typeof el.type === 'undefined'){ el.type = 'text'; }
-
     //Check the value
-    if(typeof el.value === 'undefined'){ el.value = ''; }
+    if(typeof el.text === 'undefined'){ el.text = 'Button'; }
 
     //Return the element
     return el;
