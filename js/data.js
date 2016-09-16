@@ -54,10 +54,10 @@ jviz.modules.simpleList.prototype.data = function(data)
     }
 
     //Add the buttons
-    for(var j = 0; j < this._btn.src.length; j++)
+    for(var j = 0; j < self._btn.src.length; j++)
     {
       //Display the button
-      this.displayBtn(self._btn.src[j], id_cell2, index);
+      self.displayBtn(self._btn.src[j], id_cell2, index);
     }
 
     //Add the data event
