@@ -1,0 +1,50 @@
+<html>
+<head>
+  <!-- Styles -->
+  <link rel="stylesheet" type="text/css" href="./build/font.css">
+  <link rel="stylesheet" type="text/css" href="./build/jviz.css">
+  <link rel="stylesheet" type="text/css" href="./build/simple-list.css">
+  <!-- JavaScript -->
+  <script type="text/javascript" src="./build/vendor/jquery.min.js"></script>
+  <script type="text/javascript" src="./build/jviz.js"></script>
+  <script type="text/javascript" src="./build/simple-list.js"></script>
+</head>
+<body class="jviz-body" style="padding:50px;">
+<script type="text/javascript">
+  //Simple list element
+  var t = null;
+
+  //Document ready function
+  $(document).ready(function()
+  {
+    //Table options
+    var opt = { parent: 'test', id: 'myTable' };
+
+    //Data
+    opt.data =
+    [
+      { title: 'Element 0', detail: 'This is the element 0 of the list' },
+      { title: 'Element 1', detail: 'This is the element 1 of the list' },
+      { title: 'Element 2', detail: 'This is the element 2 of the list' },
+      { title: 'Element 3', detail: 'This is the element 3 of the list' }
+    ];
+
+    //Buttons
+    opt.btn =
+    [
+      { id: 'open', text: 'Open element' }
+    ];
+
+    //Initialize the table
+    t = new jviz.modules.simpleList(opt);
+
+    //Add the click event
+    t.on('click', function(el, index){ alert('Clicked: ' + el.title); });
+
+    //Add the button event
+    t.on('btn:open', function(el, index){ alert('Open: ' + el.title); });
+  });
+</script>
+<div id="test"></div>
+</body>
+</html>
