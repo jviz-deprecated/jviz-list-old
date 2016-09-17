@@ -48,6 +48,7 @@ jviz.modules.simpleList = function(opt)
   this._btn.id = this._id + '-btn'; //Button ID
   this._btn.class = this._class + '-btn'; //Button class
   this._btn.src = (typeof opt.btn === 'undefined') ? [] : opt.btn; //Buttons list
+  this._btn.color = 'jviz-btn-'; //Button color class
 
   //Build the events
   jviz.factory.events(this);
