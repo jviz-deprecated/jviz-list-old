@@ -17,8 +17,8 @@ jviz.modules.simpleList.prototype.btn = function(list)
     if(typeof el.value === 'undefined'){ el.value = 'Button'; }
 
     //Check the button color
-    if(typeof el.color === 'undefined'){ el.color = 'navy'; }
-    
+    if(typeof el.color === 'undefined'){ el.color = ''; }
+
     //Check the color value
     el.color = (jviz.colors.exists(el.color) === true) ? el.color.toLowerCase() : 'navy';
 
@@ -36,14 +36,14 @@ jviz.modules.simpleList.prototype.btn = function(list)
 //Display a new button
 jviz.modules.simpleList.prototype.displayBtn = function(el, cell_id, cell_index)
 {
-  //Save this
-  var self = this;
-
   //Get the button id
   var id = this._btn.id + '-' + cell_index + '-' + el.id;
 
   //Add the button
   jviz.dom.append({ _tag: 'div', id: id, class: this._btn.class, _html: el.value }, cell_id);
+
+  //Add the button color
+  $('#' + id).addClass(this._btn.color + el.color);
 };
 
 //Add the button events
