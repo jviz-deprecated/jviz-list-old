@@ -40,7 +40,7 @@ jviz.modules.simpleList.prototype.displayBtn = function(el, cell_id, cell_index)
   var id = this._btn.id + '-' + cell_index + '-' + el.id;
 
   //Add the button
-  jviz.dom.append({ _tag: 'div', id: id, class: this._btn.class, _html: el.value }, cell_id);
+  jviz.dom.append(cell_id, { _tag: 'div', id: id, class: this._btn.class, _html: el.value });
 
   //Add the button color
   $('#' + id).addClass(this._btn.color + el.color);
