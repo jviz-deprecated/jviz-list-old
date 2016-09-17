@@ -2,10 +2,10 @@
 jviz.modules.simpleList.prototype.build = function()
 {
   //Build the main container
-  jviz.dom.append({ _tag: 'div', id: this._id, class: this._class }, this._parent);
+  jviz.dom.append(this._parent, { _tag: 'div', id: this._id, class: this._class });
 
   //Build the table
-  jviz.dom.append({ _tag: 'div', id: this._table.id, class: this._table.class }, this._id);
+  jviz.dom.append(this._id, { _tag: 'div', id: this._table.id, class: this._table.class });
 
   //Parse the buttons list
   this.btn(this._btn.src);
