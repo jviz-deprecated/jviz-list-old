@@ -35,6 +35,8 @@ jviz.modules.simpleList = function(opt)
   this._cell = {};
   this._cell.id = this._id + '-cell'; //Cell ID
   this._cell.class = this._class + '-cell'; //Cell class
+  this._cell.info = this._cell.id + '-wrapper-info'; //Cell info
+  this._cell.btn = this._cell.id + '-wrapper-btn'; //Cell button
 
   //Text type
   this._text = {};
