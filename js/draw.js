@@ -2,7 +2,7 @@
 jviz.modules.simpleList.prototype.draw = function()
 {
   //Reset the container
-  jviz.dom.html('', this._table.id);
+  jviz.dom.html(this._table.id, '');
 
   //Save this
   var self = this;
@@ -18,11 +18,11 @@ jviz.modules.simpleList.prototype.draw = function()
     var id_cell_btn = self._cell.btn + '-' + index;
 
     //Add the row
-    jviz.dom.append({ _tag: 'div', id: id_row, class: self._row.class }, self._table.id);
+    jviz.dom.append(self._table.id, { _tag: 'div', id: id_row, class: self._row.class });
 
     //Add the two cells
-    jviz.dom.append({ _tag: 'div', id: id_cell_info, class: self._cell.class }, id_row);
-    jviz.dom.append({ _tag: 'div', id: id_cell_btn, class: self._cell.class }, id_row);
+    jviz.dom.append(id_row, { _tag: 'div', id: id_cell_info, class: self._cell.class });
+    jviz.dom.append(id_row, { _tag: 'div', id: id_cell_btn, class: self._cell.class });
 
     //Add the title
     if(typeof el.title !== 'undefined')
@@ -31,7 +31,7 @@ jviz.modules.simpleList.prototype.draw = function()
       var value_title = (typeof el.title === 'function') ? el.title(el, index) : el.title;
 
       //Add the title value
-      jviz.dom.append({ _tag: 'div', id: id_cell_info + '-title', class: self._text.title, _html: value_title }, id_cell_info);
+      jviz.dom.append(id_cell_info, { _tag: 'div', id: id_cell_info + '-title', class: self._text.title, _html: value_title });
     }
 
     //Add the description
@@ -41,7 +41,7 @@ jviz.modules.simpleList.prototype.draw = function()
       var value_detail = (typeof el.detail === 'function') ? el.detail(el, index) : el.detail;
 
       //Add the detail value
-      jviz.dom.append({ _tag: 'div', id: id_cell_info + '-detail', class: self._text.detail, _html: value_detail}, id_cell_info);
+      jviz.dom.append(id_cell_info, { _tag: 'div', id: id_cell_info + '-detail', class: self._text.detail, _html: value_detail});
     }
 
     //Add the buttons
