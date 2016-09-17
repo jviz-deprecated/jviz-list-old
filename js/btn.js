@@ -16,6 +16,12 @@ jviz.modules.simpleList.prototype.btn = function(list)
     //Check the value
     if(typeof el.value === 'undefined'){ el.value = 'Button'; }
 
+    //Check the button color
+    if(typeof el.color === 'undefined'){ el.color = 'navy'; }
+    
+    //Check the color value
+    el.color = (jviz.colors.exists(el.color) === true) ? el.color.toLowerCase() : 'navy';
+
     //Return the element
     return el;
   });
