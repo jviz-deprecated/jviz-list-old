@@ -70,5 +70,5 @@ jviz.modules.simpleList.prototype.clickBtn = function(id, index)
   var data = this._data.src[index];
 
   //Emit the event
-  this.emit('click:' + id, data, index);
-}
+  this._events.emit('click:' + id, data, index);
+};
