@@ -51,7 +51,7 @@ jviz.modules.simpleList = function(opt)
   this._btn.color = 'jviz-btn-'; //Button color class
 
   //Build the events
-  jviz.factory.events(this);
+  this._events = new jviz.events();
 
   //Build the editable list
   this.build();
@@ -59,3 +59,6 @@ jviz.modules.simpleList = function(opt)
   //Return this
   return this;
 };
+
+//On method
+jviz.modules.simpleList.prototype.on = function(name, listener){ return this._events.add(name, listener); };
