@@ -11,7 +11,7 @@ jviz.modules.simpleList.prototype.btn = function(list)
   list = list.map(function(el)
   {
     //Check the button id
-    if(typeof el.id === 'undefined'){ el.id = jviz.utils.genID({ length: 5 }); }
+    if(typeof el.id === 'undefined'){ el.id = jviz.misc.genID({ length: 5 }); }
 
     //Check the value
     if(typeof el.value === 'undefined'){ el.value = 'Button'; }
