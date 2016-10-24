@@ -5,7 +5,7 @@ jviz.modules.simpleList = function(opt)
   if(typeof opt === 'undefined'){ var opt = {}; }
 
   //Save the component id
-  this._id = (typeof opt.id === 'undefined') ? jviz.utils.getID({ prefix: 'simplelist-', length: 5 }) : opt.id;
+  this._id = (typeof opt.id === 'undefined') ? jviz.misc.getID({ prefix: 'simplelist-', length: 5 }) : opt.id;
 
   //Save the component class name
   this._class = (typeof opt.class === 'undefined') ? 'jviz-modules-simple-list' : opt.class;
@@ -51,7 +51,7 @@ jviz.modules.simpleList = function(opt)
   this._btn.color = 'jviz-btn-'; //Button color class
 
   //Build the events
-  this._events = new jviz.events();
+  this._events = new jviz.commons.events();
 
   //Build the editable list
   this.build();
