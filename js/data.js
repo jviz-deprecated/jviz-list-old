@@ -2,7 +2,7 @@
 jviz.modules.simpleList.prototype.data = function(data)
 {
   //Check for undefined data
-  if(typeof data === 'undefined'){ return this._dats.src; }
+  if(typeof data === 'undefined'){ return this._data.src; }
 
   //Check the data
   if(jviz.is.array(data) === false){ data = [ data ]; }
