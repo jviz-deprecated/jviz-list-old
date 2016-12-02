@@ -23,6 +23,9 @@ jviz.modules.simpleList.prototype.data = function(data)
   //Save the data
   this._data.src = data;
 
+  //Save the data length
+  this._data.length = this._data.src.length;
+
   //Return this
   return this;
 };
