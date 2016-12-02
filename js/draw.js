@@ -58,3 +58,13 @@ jviz.modules.simpleList.prototype.draw = function()
   //Return this
   return this;
 };
+
+//Clear all
+jviz.modules.simpleList.prototype.clear = function()
+{
+  //Clear the list
+  jviz.dom.html(this._table.id, '');
+
+  //Continue
+  return this;
+};
