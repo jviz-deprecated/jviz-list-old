@@ -22,6 +22,9 @@ jviz.modules.simpleList.prototype.data = function(data)
 
   //Save the data
   this._data.src = data;
+
+  //Return this
+  return this;
 };
 
 //Get a data element
