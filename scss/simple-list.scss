@@ -34,7 +34,7 @@
     display: table-cell; vertical-align: middle;
 
     //Background
-    background-color: $jvizGrey2;
+    background-color: $jviz-grey-2;
 
     //Padding
     padding: { top: 10px; left: 10px; right: 10px; bottom: 10px; }
@@ -71,8 +71,8 @@
   }
 
   //Title text
-  &-title { display: block; line-height: 20px; @include jvizFont; font-weight: bold; font-size: 16px; }
+  &-title { display: block; line-height: 20px; @include jviz-font; font-weight: bold; font-size: 16px; }
 
   //Detail
-  &-detail { display: block; line-height: 20px; @include jvizFont; font-size: 15px; margin: { top: 2px; } }
+  &-detail { display: block; line-height: 20px; @include jviz-font; font-size: 15px; margin: { top: 2px; } }
 }
