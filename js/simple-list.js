@@ -18,8 +18,8 @@ jviz.modules.simpleList = function(opt)
 
   //Data
   this._data = {};
-  this._data.ajax = (typeof opt.ajax === 'undefined') ? {} : opt.ajax;
-  this._data.src = (typeof opt.data === 'undefined') ? [] : opt.data;
+  this._data.src = (typeof opt.data === 'undefined') ? [] : opt.data; //Data source
+  this._data.length = 0; //Data length
 
   //Table object
   this._table = {};
@@ -48,7 +48,7 @@ jviz.modules.simpleList = function(opt)
   this._btn.id = this._id + '-btn'; //Button ID
   this._btn.class = this._class + '-btn'; //Button class
   this._btn.src = (typeof opt.btn === 'undefined') ? [] : opt.btn; //Buttons list
-  this._btn.color = 'jviz-btn-'; //Button color class
+  this._btn.color = this._btn.class + '--{color}'; //Button color class template
 
   //Build the events
   this._events = new jviz.commons.events();
