@@ -10,9 +10,6 @@ jviz.modules.simpleList.prototype.build = function()
   //Parse the buttons list
   this.btn(this._btn.src);
 
-  //Get the data
-  if(typeof this._data.ajax.url === 'string'){ return this.ajax(this._data.ajax); }
-
   //Parse the data
   this.data(this._data.src);
 
