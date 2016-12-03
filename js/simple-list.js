@@ -13,9 +13,6 @@ jviz.modules.simpleList = function(opt)
   //Save the parent element
   this._parent = opt.parent;
 
-  //Save the element title
-  this._title = (typeof opt.title === 'undefined') ? '' : opt.title;
-
   //Data
   this._data = {};
   this._data.src = (typeof opt.data === 'undefined') ? [] : opt.data; //Data source
@@ -35,26 +32,45 @@ jviz.modules.simpleList = function(opt)
   this._cell = {};
   this._cell.id = this._id + '-cell'; //Cell ID
   this._cell.class = this._class + '-cell'; //Cell class
-  this._cell.info = this._cell.id + '-wrapper-info'; //Cell info
-  this._cell.btn = this._cell.id + '-wrapper-btn'; //Cell button
 
-  //Text type
-  this._text = {};
-  this._text.title = this._class + '-title'; //Title text class
-  this._text.detail = this._class + '-detail'; //Detail text class
+  //Cell wrapper
+  this._cell.wrapper = {};
+  this._cell.wrapper.id = this._cell.id + '-wrapper'; //Wrapper ID
+  this._cell.wrapper.info = this._cell.wrapper.id + '-info'; //Cell info
+  this._cell.wrapper.btn = this._cell.wrapper.id + '-btn'; //Cell button
+
+  //Title
+  this._title = {};
+  this._title.id = this._id + '-title'; //Title ID
+  this._title.class = this._class + '-title'; //Title class
+
+  //Detail
+  this._detail = {};
+  this._detail.id = this._id + '-detail'; //Detail ID
+  this._detail.class = this._class + '-detail'; //Detail class
 
   //Button
   this._btn = {};
   this._btn.id = this._id + '-btn'; //Button ID
   this._btn.class = this._class + '-btn'; //Button class
-  this._btn.src = (typeof opt.btn === 'undefined') ? [] : opt.btn; //Buttons list
-  this._btn.color = this._btn.class + '--{color}'; //Button color class template
+  this._btn.src = (typeof opt.btn !== 'undefined') ? opt.btn : []; //Buttons list
+  this._btn.color = this._btn.class + '--{color}'; //Buttons color class
+  this._btn.length = 0; //Number of buttons
 
   //Build the events
   this._events = new jviz.commons.events();
 
   //Build the editable list
   this.build();
+
+  //Parse the data
+  this.data(this._data.src);
+
+  //Parse the buttons list
+  this.btn(this._btn.src);
+
+  //Draw the table
+  this.draw();
 
   //Return this
   return this;
