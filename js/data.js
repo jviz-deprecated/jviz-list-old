@@ -7,21 +7,27 @@ jviz.modules.simpleList.prototype.data = function(data)
   //Check the data
   if(jviz.is.array(data) === false){ data = [ data ]; }
 
-  //Parse the data
-  data = data.map(function(el)
+  //Reset the data list
+  this._data.src = [];
+
+  //Read all the data
+  for(var i = 0; i < list.length; i++)
   {
+    //Get the element
+    var el = list[i];
+
     //Check the title
     if(typeof el.title === 'undefined'){ el.title = ''; }
 
     //Check the detail
     if(typeof el.detail === 'undefined'){ el.detail = ''; }
 
-    //Return the parsed element
-    return el;
-  });
+    //Check for empty title and detail
+    if(el.title === '' && el.detail === ''){ continue; }
 
-  //Save the data
-  this._data.src = data;
+    //Save the element
+    this._data.src.push(el);
+  }
 
   //Save the data length
   this._data.length = this._data.src.length;
