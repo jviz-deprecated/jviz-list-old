@@ -1,33 +1,42 @@
 //Add a new button
-jviz.modules.simpleList.prototype.btn = function(list)
+jviz.modules.simpleList.prototype.btn = function(opt)
 {
   //Check the object
-  if(typeof list !== 'object'){ return this; }
+  if(typeof list !== 'object'){ return this._btn.src; }
 
   //Check for array
   if(jviz.is.array(list) === false){ list = [ list ]; }
 
+  //Reset the list
+  this._btn.src = [];
+
   //Read the full list
-  list = list.map(function(el)
+  for(var i = 0; i < list.length; i++)
   {
+    //Get the button element
+    var el = list[i];
+
     //Check the button id
-    if(typeof el.id === 'undefined'){ el.id = jviz.misc.genID({ length: 5 }); }
+    if(typeof el.id !== 'string'){ continue; }
 
-    //Check the value
-    if(typeof el.value === 'undefined'){ el.value = 'Button'; }
+    //Check the button text
+    el.text = (typeof el.text !== 'string') ? 'Button' : el.text;
 
-    //Check the button color
-    if(typeof el.color === 'undefined'){ el.color = ''; }
+    //Check the color
+    el.color = (typeof el.color !== 'string') ? '' : el.color.toLowerCase();
 
-    //Check the color value
-    el.color = (jviz.colors.exists(el.color) === true) ? el.color.toLowerCase() : 'navy';
+    //Check if color exists
+    if(jviz.colors.exists(el.color) === false){ el.color = 'navy'; }
 
-    //Return the element
-    return el;
-  });
+    //Save the button
+    this._btn.src.push(el);
+  }
 
   //Save the list
   this._btn.src = list;
+
+  //Save the number of buttons
+  this._btn.length = this._btn.src.length;
 
   //Return this
   return this;
