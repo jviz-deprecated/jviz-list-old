@@ -32,9 +32,6 @@ jviz.modules.simpleList.prototype.btn = function(opt)
     this._btn.src.push(el);
   }
 
-  //Save the list
-  this._btn.src = list;
-
   //Save the number of buttons
   this._btn.length = this._btn.src.length;
 
