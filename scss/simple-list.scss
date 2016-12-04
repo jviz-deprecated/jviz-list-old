@@ -76,7 +76,7 @@
     @each $color,$list in $jviz-palette
     {
       //Add the color button
-      &--#{$color} { background-color: jviz-color-bg($color); color: jviz-color-text($color); } 
+      &--#{$color} { background-color: jviz-color-bg($color); color: jviz-color-text($color); }
     }
   }
 
@@ -84,7 +84,7 @@
   &-title
   {
     //Display
-    display: block;
+    display: block; cursor: pointer;
 
     //Line height
     line-height: 20px;
@@ -97,7 +97,7 @@
   &-detail
   {
     //Display
-    display: block;
+    display: block; cursor: pointer;
 
     //Line height
     line-height: 20px;
