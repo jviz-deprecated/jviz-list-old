@@ -56,7 +56,7 @@ jviz.modules.simpleList.prototype.draw = function()
     if(text_detail === ''){ jviz.dom.hide(id_detail); }
 
     //Add the button
-    for(var j = self._btn.src.length; j >= 0; j--)
+    for(var j = self._btn.src.length - 1; j >= 0; j--)
     {
       //Get the button
       var btn = self._btn.src[j];
