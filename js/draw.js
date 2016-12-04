@@ -65,7 +65,7 @@ jviz.modules.simpleList.prototype.draw = function()
       var id_btn = self._btn.id.replace('{index}', index).replace('{id}', btn.id);
 
       //Add the button
-      jviz.dom.append(cell_id, { id: btn_id, class: self._btn.class });
+      jviz.dom.append(id_cell_btn, { id: id_btn, class: self._btn.class });
 
       //Add the button text
       jviz.dom.html(id_btn, btn.text);
