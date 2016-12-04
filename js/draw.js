@@ -4,6 +4,9 @@ jviz.modules.simpleList.prototype.draw = function()
   //Reset the container
   jviz.dom.html(this._table.id, '');
 
+  //Check the data length
+  if(this._data.length === 0){ return this; }
+
   //Save this
   var self = this;
 
@@ -13,47 +16,70 @@ jviz.modules.simpleList.prototype.draw = function()
     //Get the row ID
     var id_row = self._row.id + '-' + index;
 
-    //Get the cell ID
-    var id_cell_info = self._cell.info + '-' + index;
-    var id_cell_btn = self._cell.btn + '-' + index;
+    //Get the info wrapper ID
+    var id_cell_info = self._cell.wrapper.info.replace('{index}', index);
+
+    //Get the button wrapper ID
+    var id_cell_btn = self._cell.wrapper.btn.replace('{index}', index);
 
     //Add the row
     jviz.dom.append(self._table.id, { id: id_row, class: self._row.class });
 
-    //Add the two cells
+    //Add the first cell
     jviz.dom.append(id_row, { id: id_cell_info, class: self._cell.class });
+
+    //Add the second cell
     jviz.dom.append(id_row, { id: id_cell_btn, class: self._cell.class });
 
-    //Add the title
-    if(typeof el.title !== 'undefined')
-    {
-      //Get the value
-      var value_title = (typeof el.title === 'function') ? el.title(el, index) : el.title;
+    //Get the title element id
+    var id_title = self._title.id.replace('{index}', index);
 
-      //Add the title value
-      jviz.dom.append(id_cell_info, { id: id_cell_info + '-title', class: self._text.title, _html: value_title });
+    //Get the title text
+    var text_title = (typeof el.title === 'function') ? el.title(el, index) : el.title;
+
+    //Add the title text
+    jviz.dom.append(id_cell_info, { id: id_title, class: self._title.class, _html: text_title });
+
+    //Check the title value
+    if(text_title === ''){ jviz.dom.hide(id_title); }
+
+    //Get the detail element id
+    var id_detail = self._detail.id.replace('{index}', index);
+
+    //Get the detail text
+    var text_detail = (typeof el.detail === 'function') ? el.detail(el, index) : el.detail;
+
+    //Add the detail text
+    jviz.dom.append(id_cell_info, { id: id_detail, class: self._detail.class, _html: text_detail});
+
+    //Check the detail value
+    if(text_detail === ''){ jviz.dom.hide(id_detail); }
+
+    //Add the button
+    for(var j = self._btn.src.length; j >= 0; j--)
+    {
+      //Get the button
+      var btn = self._btn.src[j];
+
+      //Get the button id
+      var id_btn = self._btn.id.replace('{index}', index).replace('{id}', btn.id);
+
+      //Add the button
+      jviz.dom.append(cell_id, { id: btn_id, class: self._btn.class });
+
+      //Add the button text
+      jviz.dom.html(id_btn, btn.text);
+
+      //Add the button color
+      jviz.dom.class.add(id_btn, self._btn.color.replace('{color}', btn.color));
     }
 
-    //Add the description
-    if(typeof el.detail !== 'undefined')
-    {
-      //Get the value
-      var value_detail = (typeof el.detail === 'function') ? el.detail(el, index) : el.detail;
-
-      //Add the detail value
-      jviz.dom.append(id_cell_info, { id: id_cell_info + '-detail', class: self._text.detail, _html: value_detail});
-    }
-
-    //Add the buttons
-    for(var j = 0; j < self._btn.src.length; j++)
-    {
-      //Display the button
-      self.displayBtn(self._btn.src[j], id_cell_btn, index);
-    }
+    //Next button
+    return true;
   });
 
-  //Add the button events
-  this._data.src.forEach(function(el, index){ self.eventBtn(index); });
+  //Add the events
+  this.events();
 
   //Return this
   return this;
