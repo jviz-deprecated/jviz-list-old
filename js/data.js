@@ -11,10 +11,10 @@ jviz.modules.simpleList.prototype.data = function(data)
   this._data.src = [];
 
   //Read all the data
-  for(var i = 0; i < list.length; i++)
+  for(var i = 0; i < data.length; i++)
   {
     //Get the element
-    var el = list[i];
+    var el = data[i];
 
     //Check the title
     if(typeof el.title === 'undefined'){ el.title = ''; }
