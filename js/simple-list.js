@@ -36,25 +36,25 @@ jviz.modules.simpleList = function(opt)
   //Cell wrapper
   this._cell.wrapper = {};
   this._cell.wrapper.id = this._cell.id + '-wrapper'; //Wrapper ID
-  this._cell.wrapper.info = this._cell.wrapper.id + '-info'; //Cell info
-  this._cell.wrapper.btn = this._cell.wrapper.id + '-btn'; //Cell button
+  this._cell.wrapper.info = this._cell.wrapper.id + '-info-{index}'; //Cell info
+  this._cell.wrapper.btn = this._cell.wrapper.id + '-btn-{index}'; //Cell button
 
   //Title
   this._title = {};
-  this._title.id = this._id + '-title'; //Title ID
+  this._title.id = this._id + '-title-{index}'; //Title ID
   this._title.class = this._class + '-title'; //Title class
 
   //Detail
   this._detail = {};
-  this._detail.id = this._id + '-detail'; //Detail ID
+  this._detail.id = this._id + '-detail-{index}'; //Detail ID
   this._detail.class = this._class + '-detail'; //Detail class
 
   //Button
   this._btn = {};
-  this._btn.id = this._id + '-btn'; //Button ID
+  this._btn.id = this._id + '-btn-{index}-{id}'; //Button ID template
   this._btn.class = this._class + '-btn'; //Button class
   this._btn.src = (typeof opt.btn !== 'undefined') ? opt.btn : []; //Buttons list
-  this._btn.color = this._btn.class + '--{color}'; //Buttons color class
+  this._btn.color = this._btn.class + '--{color}'; //Buttons color template
   this._btn.length = 0; //Number of buttons
 
   //Build the events
