@@ -63,11 +63,21 @@
   //Button class
   &-btn
   {
+    //Include buttons mixin
+    @include jviz-btn;
+
     //Style
     display: block !important; float: right;
 
     //Margin
     margin: { right: 5px; }
+
+    //Button colors
+    @each $color,$list in $jviz-palette
+    {
+      //Add the color button
+      &--#{$color} { background-color: jviz-color-bg($color); color: jviz-color-text($color); } 
+    }
   }
 
   //Title text
