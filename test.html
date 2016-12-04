@@ -32,18 +32,21 @@
     //Buttons
     opt.btn =
     [
-      { id: 'delete', value: 'Delete element', color: 'red' },
-      { id: 'open', value: 'Open element', color: 'blue' }
+      { id: 'open', text: 'Open', color: 'blue' },
+      { id: 'delete', text: 'Delete', color: 'red' }
     ];
 
     //Initialize the table
     t = new jviz.modules.simpleList(opt);
 
+    //Click event
+    t.on('click', function(el){ alert('Click: ' + el.title); });
+
     //Add the button event
-    t.on('click:open', function(el){ alert('Open: ' + el.title); });
+    t.on('btn:open', function(el){ alert('Open: ' + el.title); });
 
     //Add the delete button event
-    t.on('click:delete', function(el){ alert('Delete: ' + el.title); });
+    t.on('btn:delete', function(el){ alert('Delete: ' + el.title); });
   });
 </script>
 <div id="test"></div>
